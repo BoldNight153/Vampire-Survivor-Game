@@ -12,13 +12,11 @@ func _physics_process(delta: float) -> void:
 	travelled_distance += SPEED * delta
 	
 	if travelled_distance > RANGE: 
-		get_parent().remove_child(self)
 		queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:
-	get_parent().remove_child(self)
 	queue_free()
 	
-	if body.has_node("take_damage"):
+	if body.has_method("take_damage"):
 		body.take_damage()

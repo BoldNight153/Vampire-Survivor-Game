@@ -1,13 +1,17 @@
 extends Area2D
 
 var enemies_in_range : Array[Node2D] = []
+var target_enemy : CharacterBody2D = null
+
+func _process(delta: float) -> void:
+	pass
 
 func  _physics_process(delta: float) -> void:
 	enemies_in_range = get_overlapping_bodies()
 	if enemies_in_range.size() > 0:
-		var target_enemy = enemies_in_range.front() as CharacterBody2D
+		target_enemy = enemies_in_range.front() as CharacterBody2D
 		look_at(target_enemy.global_position)
-
+	
 
 func shoot():
 	const BULLET = preload("res://scenes/bullet.tscn")
