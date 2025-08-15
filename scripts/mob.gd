@@ -30,4 +30,5 @@ func take_damage() -> void:
 	health -= 1.0
 	if health <= 0.0:
 		get_parent().remove_child(self)
+		
 		queue_free()
